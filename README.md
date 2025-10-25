@@ -15,7 +15,7 @@ git clone <your-repo-url>
 ```
 
 
-### 4. Frontend Setup (Next.js)
+### 2. Frontend Setup (Next.js)
 ```bash
 cd frontend
 npm install
