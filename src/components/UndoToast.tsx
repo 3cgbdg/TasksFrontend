@@ -1,5 +1,5 @@
 
-
+// component for toast rendering with undo button
 export const UndoToast = ({ closeToast, onUndo, variant }: { closeToast: () => void;  onUndo: () => void, variant: 'delete' | 'complete' }) => {
     return (
         <div className="flex items-center justify-between gap-2">

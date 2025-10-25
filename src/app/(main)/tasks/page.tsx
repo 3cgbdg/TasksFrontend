@@ -13,6 +13,7 @@ const Page = () => {
     const [categories, setCategories] = useState<ICategory[]>([]);
     const [filteredTasks, setFilteredTasks] = useState<ITask[] | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(false);
+
     // useEffect for getting tasks
     useEffect(() => {
         const fetchTasks = async () => {
@@ -25,10 +26,12 @@ const Page = () => {
         fetchTasks();
     }, [])
 
+    // getting independent state for filtering tasks
     useEffect(() => {
         if (!tasks) return;
         setFilteredTasks(tasks);
-    }, [tasks])
+    }, [tasks]);
+
     // useEffect for getting categories
     useEffect(() => {
         const fetchCategories = async () => {
@@ -40,7 +43,6 @@ const Page = () => {
     }, [])
 
     // mark as completed
-
     const markAsCompleted = (task: ITask) => {
         let undoClicked = false;
         const toastId = toast(<UndoToast variant="complete" onUndo={() => {
@@ -52,7 +54,9 @@ const Page = () => {
             draggable: false,
         });
 
+        // after 5 sec calling api
         setTimeout(async () => {
+            // if not clicked than call
             if (!undoClicked) {
                 const updated = await updateTaskStatus(task.id);
                 if (updated)
@@ -61,6 +65,7 @@ const Page = () => {
         }, 5000);
     };
 
+    // deleting task
     const deleteTaskItem = (task: ITask) => {
         let undoClicked = false;
         const toastId = toast(<UndoToast variant="delete" onUndo={() => {
@@ -72,7 +77,9 @@ const Page = () => {
             draggable: false,
         });
 
+        // after 5 sec calling api
         setTimeout(async () => {
+            // if not clicked than call
             if (!undoClicked) {
                 const deleted = await deleteTask(task.id);
                 if (deleted)

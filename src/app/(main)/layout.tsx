@@ -20,6 +20,7 @@ export default async function MainLayout({
                 </div>
 
             </div>
+            {/* for toast position */}
             <ToastContainer position="top-right" />
         </div >
     );
