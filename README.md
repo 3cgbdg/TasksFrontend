@@ -22,7 +22,7 @@ npm install
 #Start frontend
 npm run dev
 ```
-## 3.Create .env
+##№ 3. Create .env
 ```bash
 NEXT_PUBLIC_API_URL=http://localhost:5200
 ```
